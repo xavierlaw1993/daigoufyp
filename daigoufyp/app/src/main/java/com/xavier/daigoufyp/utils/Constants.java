@@ -8,7 +8,7 @@ import com.xavier.daigoufyp.controller.network.DaigouFypInterface;
 public class Constants {
 
     public static String getAPIEndpoint() {
-        return "";
+        return "http://";
     }
 
     public static Class getAPIInterface() {

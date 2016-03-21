@@ -17,11 +17,6 @@ public class DaigouFypSerivce extends RetrofitGsonSpiceService {
     }
 
     @Override
-    protected RestAdapter.Builder createRestAdapterBuilder() {
-        return super.createRestAdapterBuilder();
-    }
-
-    @Override
     protected String getServerUrl() {
         return Constants.getAPIEndpoint();
     }
