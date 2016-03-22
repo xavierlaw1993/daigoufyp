@@ -3,23 +3,36 @@ package com.xavier.daigoufyp.controller.page.login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
+import android.util.Log;
 
+import com.google.inject.Inject;
 import com.xavier.daigoufyp.R;
+import com.xavier.daigoufyp.controller.page.home.HomeActivity;
+import com.xavier.daigoufyp.controller.page.home.MainActivity;
+import com.xavier.daigoufyp.model.User;
 
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 
 @ContentView(R.layout.activity_splash)
 public class SplashActivity extends RoboActivity {
+    private static String TAG = "SplashActivity";
+    @Inject
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Log.v(TAG, "user " + user.toString());
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(SplashActivity.this, LoginActivity.class);
+                Intent i = new Intent();
+                if (TextUtils.isEmpty(user.userId))
+                    i.setClass(SplashActivity.this, LoginActivity.class);
+                else
+                    i.setClass(SplashActivity.this, MainActivity.class);
                 startActivity(i);
             }
         }, 2000);

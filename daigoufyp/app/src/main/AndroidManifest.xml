@@ -11,20 +11,20 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".controller.page.login.SplashActivity"
             android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".controller.page.login.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".controller.page.HomeActivity" />
+        <activity android:name=".controller.page.home.HomeActivity" />
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
@@ -43,6 +43,11 @@
         <service
             android:name=".controller.network.DaigouFypSerivce"
             android:exported="false" />
+
+        <activity
+            android:name=".controller.page.home.MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
