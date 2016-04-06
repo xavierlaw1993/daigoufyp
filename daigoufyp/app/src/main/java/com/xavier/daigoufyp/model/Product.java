@@ -34,4 +34,27 @@ public class Product {
 
     @Expose
     public String remark;
+
+    @Expose
+    public String category;
+
+    @Expose
+    public String country;
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "product_id=" + product_id +
+                ", product_name='" + product_name + '\'' +
+                ", product_pic_url='" + product_pic_url + '\'' +
+                ", product_description='" + product_description + '\'' +
+                ", product_create_time=" + product_create_time +
+                ", product_end_time=" + product_end_time +
+                ", product_price=" + product_price +
+                ", quantity=" + quantity +
+                ", remark='" + remark + '\'' +
+                ", category='" + category + '\'' +
+                ", country='" + country + '\'' +
+                '}';
+    }
 }

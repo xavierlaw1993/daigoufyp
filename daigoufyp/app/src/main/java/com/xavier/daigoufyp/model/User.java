@@ -23,33 +23,29 @@ public class User {
     SharedPreferences sharedPreferences;
 
     @Expose
-    public String userId;
+    public String user_id;
 
     @Expose
-    public String name;
+    public String user_email;
 
     @Expose
-    public String userPic;
+    public String user_name;
 
     @Expose
-    public String email;
+    public String user_profile_pic;
 
     @Expose
-    public String gender;
-
-    @Expose
-    public String phone;
+    public String user_phone;
 
     @Override
     public String toString() {
         return "User{" +
                 "sharedPreferences=" + sharedPreferences +
-                ", userId='" + userId + '\'' +
-                ", name='" + name + '\'' +
-                ", userPic='" + userPic + '\'' +
-                ", email='" + email + '\'' +
-                ", gender='" + gender + '\'' +
-                ", phone='" + phone + '\'' +
+                ", user_id='" + user_id + '\'' +
+                ", user_email='" + user_email + '\'' +
+                ", user_name='" + user_name + '\'' +
+                ", user_profile_pic='" + user_profile_pic + '\'' +
+                ", user_phone='" + user_phone + '\'' +
                 '}';
     }
 
@@ -59,33 +55,31 @@ public class User {
         try {
             Gson gson = new Gson();
             User savedUser = gson.fromJson(sharedPreferences.getString(Constants.PREF_USER, null), User.class);
-            userId = savedUser.userId;
-            name = savedUser.name;
-            userPic = savedUser.userPic;
-            phone = savedUser.phone;
-            email = savedUser.email;
-            gender = savedUser.gender;
+            user_id = savedUser.user_id;
+            user_email = savedUser.user_email;
+            user_name = savedUser.user_name;
+            user_profile_pic = savedUser.user_profile_pic;
+            user_phone = savedUser.user_phone;
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public User updateUser(User user) {
-        userId = user.userId;
-        name = user.name;
-        userPic = user.userPic;
-        phone = user.phone;
-        email = user.email;
-        gender = user.gender;
+        user_id = user.user_id;
+        user_email = user.user_email;
+        user_name = user.user_name;
+        user_profile_pic = user.user_profile_pic;
+        user_phone = user.user_phone;
         return this;
     }
 
     public User clearUser() {
-        userId = null;
-        name = null;
-        phone = null;
-        email = null;
-        gender = null;
+        user_id = null;
+        user_email = null;
+        user_name = null;
+        user_profile_pic = null;
+        user_phone = null;
         return this;
     }
 
