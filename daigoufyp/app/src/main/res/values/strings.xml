@@ -4,9 +4,14 @@
     <string name="login__facebook_login_btn">Login With Facebook</string>
     <string name="login__email_login_btn">Login With Email</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="home__product_fragment_title">Products</string>
+    <string name="home__shop_fragment_title">Shops</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

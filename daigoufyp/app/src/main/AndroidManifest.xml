@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".controller.DagiouFypApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -24,12 +25,17 @@
         <activity
             android:name=".controller.page.login.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".controller.page.home.HomeActivity" />
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name=".controller.page.home.HomeFragment" />
+        <activity
+            android:name=".controller.page.home.MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".controller.page.detail.ProductDetailActivity" />
 
         <provider
             android:name="com.facebook.FacebookContentProvider"
@@ -39,15 +45,22 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="AA_DB_NAME"
+            android:value="daigou.db" />
+        <meta-data
+            android:name="AA_DB_VERSION"
+            android:value="1" />
+        <meta-data
+            android:name="AA_MODELS"
+            android:value="com.clp.consumer.model.Country, com.clp.consumer.model.Category" />
 
         <service
             android:name=".controller.network.DaigouFypSerivce"
             android:exported="false" />
 
-        <activity
-            android:name=".controller.page.home.MainActivity"
-            android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".controller.page.create.NewProductActivity" />
+        <activity android:name=".controller.page.create.NewShopActivity"></activity>
     </application>
 
 </manifest>

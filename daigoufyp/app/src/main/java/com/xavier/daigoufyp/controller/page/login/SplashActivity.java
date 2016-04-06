@@ -3,12 +3,10 @@ package com.xavier.daigoufyp.controller.page.login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.TextUtils;
 import android.util.Log;
 
 import com.google.inject.Inject;
 import com.xavier.daigoufyp.R;
-import com.xavier.daigoufyp.controller.page.home.HomeActivity;
 import com.xavier.daigoufyp.controller.page.home.MainActivity;
 import com.xavier.daigoufyp.model.User;
 
@@ -29,9 +27,12 @@ public class SplashActivity extends RoboActivity {
             @Override
             public void run() {
                 Intent i = new Intent();
-                if (TextUtils.isEmpty(user.userId))
-                    i.setClass(SplashActivity.this, LoginActivity.class);
-                else
+                /**
+                 * TODO: need to uncomment
+                 */
+//                if (TextUtils.isEmpty(user.userId))
+//                    i.setClass(SplashActivity.this, LoginActivity.class);
+//                else
                     i.setClass(SplashActivity.this, MainActivity.class);
                 startActivity(i);
             }

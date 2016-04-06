@@ -16,7 +16,6 @@ import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.google.inject.Inject;
 import com.xavier.daigoufyp.R;
-import com.xavier.daigoufyp.controller.page.home.HomeActivity;
 import com.xavier.daigoufyp.controller.page.abs.AbsSpiceActivity;
 import com.xavier.daigoufyp.controller.page.home.MainActivity;
 import com.xavier.daigoufyp.model.User;
