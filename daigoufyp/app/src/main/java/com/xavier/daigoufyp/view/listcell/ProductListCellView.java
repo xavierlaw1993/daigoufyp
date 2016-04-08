@@ -4,18 +4,48 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.xavier.daigoufyp.R;
 import com.xavier.daigoufyp.model.Product;
+import com.xavier.daigoufyp.utils.TimerHelper;
+import com.xavier.daigoufyp.utils.Utils;
+
+import org.w3c.dom.Text;
+
+import java.text.DateFormat;
 
 import roboguice.RoboGuice;
+import roboguice.inject.InjectView;
 
 /**
- * Created by zensis on 6/4/16.
+ * Created by xavier on 6/4/16.
  */
 public class ProductListCellView extends LinearLayout {
     Context context;
+
+    @InjectView(R.id.productNameTextView)
+    TextView productNameTextView;
+
+    @InjectView(R.id.productPriceTextView)
+    TextView productPriceTextView;
+
+    @InjectView(R.id.productCategoryTextView)
+    TextView productCategoryTextView;
+
+    @InjectView(R.id.productCountryTextView)
+    TextView productCountryTextView;
+
+    @InjectView(R.id.productDurationTextView)
+    TextView productDurationTextView;
+
+    @InjectView(R.id.productPicImageView)
+    ImageView productPicImageView;
+
+    TimerHelper timerHelper;
 
     public ProductListCellView(Context context) {
         super(context);
@@ -43,9 +73,41 @@ public class ProductListCellView extends LinearLayout {
         inflate(context, R.layout.view_product_item, this);
         RoboGuice.getInjector(getContext()).injectMembers(this);
         RoboGuice.getInjector(getContext()).injectViewMembers(this);
+        timerHelper = new TimerHelper(context);
     }
 
     public void bindModel(Product product) {
+        productNameTextView.setText(product.product_name);
+        productPriceTextView.setText("HKD " + product.product_price);
+        productCategoryTextView.setText(product.category);
+        productCountryTextView.setText(product.country);
 
+        try {
+            Picasso.with(context)
+                    .load(product.product_pic_url)
+                    .placeholder(R.mipmap.ic_launcher)
+                    .error(R.mipmap.ic_launcher)
+                    .resize(Utils.screenWidth, (int) (Utils.screenWidth * Utils.hdRatio))
+                    .into(productPicImageView);
+        } catch (Exception ex) {
+        }
+
+        timerHelper.setTimerHelperListener(new TimerHelper.TimerHelperListener() {
+            @Override
+            public void onTimerStarted(String startTime) {
+                productDurationTextView.setText(startTime);
+            }
+
+            @Override
+            public void onTimerTicking(String tickTime) {
+                productDurationTextView.setText(tickTime);
+            }
+
+            @Override
+            public void onTimerFinished() {
+                productDurationTextView.setText(context.getString(R.string.product__finished));
+            }
+        });
+        timerHelper.countDown(product.product_end_time);
     }
 }

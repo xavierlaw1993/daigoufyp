@@ -61,11 +61,10 @@ public class LoginActivity extends AbsSpiceActivity {
                         Log.v(TAG, "bFacebookData.toString() " + bFacebookData.toString());
                         User newUser = new User(LoginActivity.this);
                         try {
-                            newUser.userId = bFacebookData.getString("facebook_id");
-                            newUser.name = bFacebookData.getString("first_name").concat(" ").concat(bFacebookData.getString("last_name"));
-                            newUser.email = bFacebookData.getString("email");
-                            newUser.phone = bFacebookData.getString("phone");
-                            newUser.gender = bFacebookData.getString("gender");
+                            newUser.user_id = bFacebookData.getString("facebook_id");
+                            newUser.user_name = bFacebookData.getString("first_name").concat(" ").concat(bFacebookData.getString("last_name"));
+                            newUser.user_email = bFacebookData.getString("email");
+                            newUser.user_phone = bFacebookData.getString("phone");
                             user.updateUser(newUser).commit();
                             Intent i = new Intent(LoginActivity.this, MainActivity.class);
                             i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);

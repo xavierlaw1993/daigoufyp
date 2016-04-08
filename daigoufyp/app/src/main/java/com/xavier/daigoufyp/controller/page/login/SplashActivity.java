@@ -9,6 +9,7 @@ import com.google.inject.Inject;
 import com.xavier.daigoufyp.R;
 import com.xavier.daigoufyp.controller.page.home.MainActivity;
 import com.xavier.daigoufyp.model.User;
+import com.xavier.daigoufyp.utils.Utils;
 
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
@@ -22,6 +23,7 @@ public class SplashActivity extends RoboActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.getScreenSize(this);
         Log.v(TAG, "user " + user.toString());
         new Handler().postDelayed(new Runnable() {
             @Override

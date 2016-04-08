@@ -36,6 +36,7 @@ public class MainActivity extends AbsSpiceActivity implements NavigationView.OnN
     @InjectView(R.id.newProductFloatActionButton)
     FloatingActionButton newProductFloatActionButton;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         FacebookSdk.sdkInitialize(getApplicationContext());
@@ -56,6 +57,11 @@ public class MainActivity extends AbsSpiceActivity implements NavigationView.OnN
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
+
+        //default set home fragment
+        if (savedInstanceState == null) {
+            navigationView.getMenu().performIdentifierAction(R.id.nav_home, 0);
+        }
     }
 
     @Override
@@ -93,8 +99,8 @@ public class MainActivity extends AbsSpiceActivity implements NavigationView.OnN
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        Fragment fragment = null;
         Class fragmentClass;
+        Fragment fragment = null;
 
         switch (item.getItemId()) {
             case R.id.nav_home:

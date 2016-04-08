@@ -5,7 +5,7 @@ import com.activeandroid.annotation.Column;
 import com.google.gson.annotations.Expose;
 
 /**
- * Created by zensis on 6/4/16.
+ * Created by xavier on 6/4/16.
  */
 public class Country extends Model {
     @Expose

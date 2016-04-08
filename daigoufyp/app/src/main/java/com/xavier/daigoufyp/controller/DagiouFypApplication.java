@@ -5,7 +5,7 @@ import android.app.Application;
 import com.activeandroid.ActiveAndroid;
 
 /**
- * Created by zensis on 6/4/16.
+ * Created by xavier on 6/4/16.
  */
 public class DagiouFypApplication extends Application{
     @Override

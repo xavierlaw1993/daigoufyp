@@ -10,7 +10,7 @@ import com.xavier.daigoufyp.controller.page.home.ProductsFragment;
 import com.xavier.daigoufyp.controller.page.home.ShopsFragment;
 
 /**
- * Created by zensis on 6/4/16.
+ * Created by xavier on 6/4/16.
  */
 public class HomePagerAdapter extends FragmentStatePagerAdapter {
     Context context;

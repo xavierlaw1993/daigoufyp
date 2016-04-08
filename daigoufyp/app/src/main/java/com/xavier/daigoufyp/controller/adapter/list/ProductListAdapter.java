@@ -10,7 +10,7 @@ import com.xavier.daigoufyp.view.listcell.ProductListCellView;
 import java.util.List;
 
 /**
- * Created by zensis on 6/4/16.
+ * Created by xavier on 6/4/16.
  */
 public class ProductListAdapter extends AbsListAdapter<ProductListAdapter.ProductViewHolder> {
     List<Product> productList;

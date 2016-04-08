@@ -3,7 +3,7 @@ package com.xavier.daigoufyp.controller.adapter.list;
 import android.support.v7.widget.RecyclerView;
 
 /**
- * Created by zensis on 6/4/16.
+ * Created by xavier on 6/4/16.
  */
 public abstract class AbsListAdapter<T extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<T> {
 

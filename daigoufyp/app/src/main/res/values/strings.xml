@@ -6,6 +6,9 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="home__product_fragment_title">Products</string>
     <string name="home__shop_fragment_title">Shops</string>
+    <string name="product__days_unit">days</string>
+    <string name="product__day_unit">day</string>
+    <string name="product__finished">Finished</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

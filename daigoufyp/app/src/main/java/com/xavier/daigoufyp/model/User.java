@@ -37,15 +37,18 @@ public class User {
     @Expose
     public String user_phone;
 
+    @Expose
+    public String delivery_address;
+
     @Override
     public String toString() {
         return "User{" +
-                "sharedPreferences=" + sharedPreferences +
-                ", user_id='" + user_id + '\'' +
+                "user_id='" + user_id + '\'' +
                 ", user_email='" + user_email + '\'' +
                 ", user_name='" + user_name + '\'' +
                 ", user_profile_pic='" + user_profile_pic + '\'' +
                 ", user_phone='" + user_phone + '\'' +
+                ", delivery_address='" + delivery_address + '\'' +
                 '}';
     }
 
@@ -60,6 +63,7 @@ public class User {
             user_name = savedUser.user_name;
             user_profile_pic = savedUser.user_profile_pic;
             user_phone = savedUser.user_phone;
+            delivery_address = savedUser.delivery_address;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -71,6 +75,7 @@ public class User {
         user_name = user.user_name;
         user_profile_pic = user.user_profile_pic;
         user_phone = user.user_phone;
+        delivery_address = user.delivery_address;
         return this;
     }
 
@@ -80,6 +85,7 @@ public class User {
         user_name = null;
         user_profile_pic = null;
         user_phone = null;
+        delivery_address = null;
         return this;
     }
 

@@ -1,6 +1,5 @@
 package com.xavier.daigoufyp.controller.page.home;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -8,17 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.facebook.FacebookSdk;
-import com.facebook.login.LoginManager;
 import com.google.inject.Inject;
 import com.xavier.daigoufyp.R;
 import com.xavier.daigoufyp.controller.adapter.pager.HomePagerAdapter;
-import com.xavier.daigoufyp.controller.page.abs.AbsSpiceActivity;
 import com.xavier.daigoufyp.controller.page.abs.AbsSpiceFragment;
-import com.xavier.daigoufyp.controller.page.login.LoginActivity;
 import com.xavier.daigoufyp.model.User;
 
-import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
 
 public class HomeFragment extends AbsSpiceFragment {

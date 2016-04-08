@@ -7,13 +7,12 @@ import retrofit.http.Field;
 import retrofit.http.GET;
 
 /**
- * Created by xavier on 21/3/16.
+ * Created by zensis on 8/4/16.
  */
-public interface DaigouFypInterface {
-    @GET("/get_all_products")
+public interface DummyInterface {
+    @GET("/get_all_products.json")
     ProductListResponse getAllProducts();
 
-    @GET("/get_product_detail")
+    @GET("/get_product_detail.json")
     ProductResponse getProductDetail(@Field("product_id") int product_id);
-
 }

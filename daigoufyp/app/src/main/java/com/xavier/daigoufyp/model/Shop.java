@@ -3,7 +3,7 @@ package com.xavier.daigoufyp.model;
 import com.google.gson.annotations.Expose;
 
 /**
- * Created by zensis on 6/4/16.
+ * Created by xavier on 6/4/16.
  */
 public class Shop {
     private static String TAG = "Shop";
