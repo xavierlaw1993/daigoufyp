@@ -60,7 +60,8 @@
             android:exported="false" />
 
         <activity android:name=".controller.page.create.NewProductActivity" />
-        <activity android:name=".controller.page.create.NewShopActivity"></activity>
+        <activity android:name=".controller.page.create.NewShopActivity" />
+        <activity android:name=".controller.page.FullScreenPictureActivity"></activity>
     </application>
 
 </manifest>

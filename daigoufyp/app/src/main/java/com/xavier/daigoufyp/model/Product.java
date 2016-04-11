@@ -2,6 +2,8 @@ package com.xavier.daigoufyp.model;
 
 import com.google.gson.annotations.Expose;
 
+import java.util.List;
+
 /**
  * Created by xavier on 6/4/16.
  */
@@ -15,7 +17,7 @@ public class Product {
     public String product_name;
 
     @Expose
-    public String product_pic_url;
+    public List<ProductPicture> product_pics;
 
     @Expose
     public String product_description;
@@ -46,7 +48,7 @@ public class Product {
         return "Product{" +
                 "product_id=" + product_id +
                 ", product_name='" + product_name + '\'' +
-                ", product_pic_url='" + product_pic_url + '\'' +
+                ", product_pics=" + product_pics +
                 ", product_description='" + product_description + '\'' +
                 ", product_create_time=" + product_create_time +
                 ", product_end_time=" + product_end_time +
