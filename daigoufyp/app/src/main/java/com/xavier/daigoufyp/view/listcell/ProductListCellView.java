@@ -84,7 +84,7 @@ public class ProductListCellView extends LinearLayout {
 
         try {
             Picasso.with(context)
-                    .load(product.product_pic_url)
+                    .load(product.product_pics.get(0).product_pic_url)
                     .placeholder(R.mipmap.ic_launcher)
                     .error(R.mipmap.ic_launcher)
                     .resize(Utils.screenWidth, (int) (Utils.screenWidth * Utils.hdRatio))
