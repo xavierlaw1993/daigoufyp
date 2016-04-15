@@ -15,6 +15,7 @@
         <activity
             android:name=".controller.page.login.SplashActivity"
             android:noHistory="true"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,18 +25,34 @@
         </activity>
         <activity
             android:name=".controller.page.login.LoginActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity android:name=".controller.page.home.HomeFragment" />
         <activity
             android:name=".controller.page.home.MainActivity"
             android:label="@string/title_activity_main"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".controller.page.detail.ProductDetailActivity" />
+        <activity
+            android:name=".controller.page.create.NewProductActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".controller.page.product.ProductDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".controller.page.product.ProductConfirmBuyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".controller.page.create.NewShopActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".controller.page.shop.ShopDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".controller.page.FullScreenPictureActivity" />
 
         <provider
             android:name="com.facebook.FacebookContentProvider"
@@ -59,9 +76,6 @@
             android:name=".controller.network.DaigouFypSerivce"
             android:exported="false" />
 
-        <activity android:name=".controller.page.create.NewProductActivity" />
-        <activity android:name=".controller.page.create.NewShopActivity" />
-        <activity android:name=".controller.page.FullScreenPictureActivity"></activity>
     </application>
 
 </manifest>

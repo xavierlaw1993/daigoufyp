@@ -4,10 +4,13 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.xavier.daigoufyp.R;
 import com.xavier.daigoufyp.model.Product;
@@ -25,6 +28,8 @@ import roboguice.inject.InjectView;
  * Created by xavier on 6/4/16.
  */
 public class ProductListCellView extends LinearLayout {
+    private static String TAG = "ProductListCellView";
+
     Context context;
 
     @InjectView(R.id.productNameTextView)
@@ -82,13 +87,27 @@ public class ProductListCellView extends LinearLayout {
         productCategoryTextView.setText(product.category);
         productCountryTextView.setText(product.country);
 
+        ViewGroup.LayoutParams params = productPicImageView.getLayoutParams();
+        params.height = (int) (Utils.screenWidth * Utils.hdRatio);
+        productPicImageView.setLayoutParams(params);
+
         try {
             Picasso.with(context)
                     .load(product.product_pics.get(0).product_pic_url)
                     .placeholder(R.mipmap.ic_launcher)
                     .error(R.mipmap.ic_launcher)
                     .resize(Utils.screenWidth, (int) (Utils.screenWidth * Utils.hdRatio))
-                    .into(productPicImageView);
+                    .into(productPicImageView, new Callback() {
+                        @Override
+                        public void onSuccess() {
+                            Log.v(TAG, "onSuccess");
+                        }
+
+                        @Override
+                        public void onError() {
+                            Log.v(TAG, "onError");
+                        }
+                    });
         } catch (Exception ex) {
         }
 

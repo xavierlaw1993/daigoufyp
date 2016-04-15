@@ -21,4 +21,7 @@
     <dimen name="border_corner_radius">4dp</dimen>
     <dimen name="border_stroke_width">1dp</dimen>
     <dimen name="border_padding_width">2dp</dimen>
+
+    <!-- custom view -->
+    <dimen name="view_custom_spinner_height">80dp</dimen>
 </resources>

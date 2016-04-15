@@ -2,6 +2,7 @@ package com.xavier.daigoufyp.utils;
 
 import android.content.Context;
 import android.os.CountDownTimer;
+import android.util.Log;
 
 import com.xavier.daigoufyp.R;
 
@@ -13,6 +14,8 @@ import java.util.concurrent.TimeUnit;
  * Created by zensis on 8/4/16.
  */
 public class TimerHelper {
+    private static String TAG = "TimerHelper";
+
     CountDownTimer timer;
     Context context;
     TimerHelperListener listener;
@@ -26,14 +29,17 @@ public class TimerHelper {
     }
 
     public void countDown(long endTime) {
+//        Log.v(TAG, "countDown " + "end " + endTime + " now " + Utils.getCurrentTimeMilliSeconds());
         long timeDiff = endTime - Utils.getCurrentTimeMilliSeconds();
         if (timeDiff > 0) {
+//            Log.v(TAG, "countDown " + timeDiff);
             if (listener != null)
                 listener.onTimerStarted(formattedTime(timeDiff));
 
             timer = new CountDownTimer(timeDiff, 1000) {
                 @Override
                 public void onTick(long millisUntilFinished) {
+//                    Log.v(TAG, "onTick");
                     if (listener != null)
                         listener.onTimerTicking(formattedTime(millisUntilFinished));
                 }
@@ -44,6 +50,9 @@ public class TimerHelper {
                         listener.onTimerFinished();
                 }
             }.start();
+        } else {
+            if (listener != null)
+                listener.onTimerFinished();
         }
     }
 

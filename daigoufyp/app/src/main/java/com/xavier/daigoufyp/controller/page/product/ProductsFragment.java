@@ -1,4 +1,4 @@
-package com.xavier.daigoufyp.controller.page.home;
+package com.xavier.daigoufyp.controller.page.product;
 
 
 import android.content.Intent;
@@ -16,7 +16,6 @@ import com.xavier.daigoufyp.controller.adapter.list.ProductListAdapter;
 import com.xavier.daigoufyp.controller.network.AbsRequestListener;
 import com.xavier.daigoufyp.controller.network.request.GetAllProductsRequest;
 import com.xavier.daigoufyp.controller.page.abs.AbsSpiceFragment;
-import com.xavier.daigoufyp.controller.page.detail.ProductDetailActivity;
 import com.xavier.daigoufyp.model.Product;
 import com.xavier.daigoufyp.model.response.ProductListResponse;
 import com.xavier.daigoufyp.utils.Utils;

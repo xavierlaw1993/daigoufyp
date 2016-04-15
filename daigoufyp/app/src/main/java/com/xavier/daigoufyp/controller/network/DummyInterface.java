@@ -5,6 +5,8 @@ import com.xavier.daigoufyp.model.response.ProductResponse;
 
 import retrofit.http.Field;
 import retrofit.http.GET;
+import retrofit.http.Path;
+import retrofit.http.Query;
 
 /**
  * Created by zensis on 8/4/16.
@@ -14,5 +16,5 @@ public interface DummyInterface {
     ProductListResponse getAllProducts();
 
     @GET("/get_product_detail.json")
-    ProductResponse getProductDetail(@Field("product_id") int product_id);
+    ProductResponse getProductDetail(@Query("product_id") int product_id);
 }

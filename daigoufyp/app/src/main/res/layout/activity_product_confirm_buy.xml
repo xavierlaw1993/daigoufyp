@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:padding="@dimen/fab_margin"
+            android:text="@string/product__quantity"
+            android:textColor="@color/colorWhite" />
+
+        <com.xavier.daigoufyp.view.CustomSpinnerView
+            android:id="@+id/quantitySpinnerView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_custom_spinner_height" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:padding="@dimen/fab_margin"
+            android:text="@string/product__price"
+            android:textColor="@color/colorWhite" />
+
+        <TextView
+            android:id="@+id/totalPriceTextView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_custom_spinner_height"
+            android:gravity="center"
+            android:padding="@dimen/half_margin"
+            android:textAppearance="@style/TextAppearanceLarge"
+            android:textColor="@color/colorAccent" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/confirmToBuyButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:onClick="onConfirmToBuyClick"
+        android:text="@string/product__confirm_to_buy" />
+</RelativeLayout>

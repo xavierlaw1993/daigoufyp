@@ -6,8 +6,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.xavier.daigoufyp.R;
-import com.xavier.daigoufyp.controller.page.home.ProductsFragment;
-import com.xavier.daigoufyp.controller.page.home.ShopsFragment;
+import com.xavier.daigoufyp.controller.page.product.ProductsFragment;
+import com.xavier.daigoufyp.controller.page.shop.ShopsFragment;
 
 /**
  * Created by xavier on 6/4/16.

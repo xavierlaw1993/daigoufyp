@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/dropImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:padding="@dimen/half_margin"
+        android:src="@drawable/ic_navigate_before_black_48dp" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary" />
+
+
+    <EditText
+        android:id="@+id/contentEditText"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
+        android:cursorVisible="false"
+        android:gravity="center"
+        android:inputType="number"
+        android:padding="@dimen/half_margin"
+        android:textAppearance="@style/TextAppearanceLarge"
+        android:textColor="@color/colorAccent" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary" />
+
+    <ImageView
+        android:id="@+id/riseImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:padding="@dimen/half_margin"
+        android:src="@drawable/ic_navigate_next_black_48dp" />
+</LinearLayout>

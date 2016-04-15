@@ -8,7 +8,13 @@
     <string name="home__shop_fragment_title">Shops</string>
     <string name="product__days_unit">days</string>
     <string name="product__day_unit">day</string>
+    <string name="product__price_unit">HKD</string>
     <string name="product__finished">Finished</string>
+    <string name="product__want_to_buy">Want to buy</string>
+    <string name="product__confirm_to_buy">Confirm to buy</string>
+    <string name="product__quantity">Quantity</string>
+    <string name="product__price">Price</string>
+
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

@@ -10,10 +10,17 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="android:colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="titleTextColor">@color/white</item>
-        <item name="android:titleTextColor">@color/white</item>
+        <item name="android:colorAccent">@color/colorAccent</item>
+        <item name="titleTextColor">@color/colorWhite</item>
+        <item name="android:titleTextColor">@color/colorWhite</item>
+        <item name="buttonStyle">@style/ButtonStyle</item>
+        <item name="android:buttonStyle">@style/ButtonStyle</item>
+        <item name="colorButtonNormal">@color/colorAccent</item>
+        <item name="android:colorButtonNormal">@color/colorAccent</item>
         <item name="android:textViewStyle">@style/TextViewStyle</item>
     </style>
 

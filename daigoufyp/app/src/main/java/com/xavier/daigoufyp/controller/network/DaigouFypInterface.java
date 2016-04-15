@@ -5,6 +5,8 @@ import com.xavier.daigoufyp.model.response.ProductResponse;
 
 import retrofit.http.Field;
 import retrofit.http.GET;
+import retrofit.http.Path;
+import retrofit.http.Query;
 
 /**
  * Created by xavier on 21/3/16.
@@ -14,6 +16,6 @@ public interface DaigouFypInterface {
     ProductListResponse getAllProducts();
 
     @GET("/get_product_detail")
-    ProductResponse getProductDetail(@Field("product_id") int product_id);
+    ProductResponse getProductDetail(@Query("product_id") int product_id);
 
 }

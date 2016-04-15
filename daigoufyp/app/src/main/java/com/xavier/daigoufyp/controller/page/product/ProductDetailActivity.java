@@ -1,16 +1,25 @@
-package com.xavier.daigoufyp.controller.page.detail;
+package com.xavier.daigoufyp.controller.page.product;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.xavier.daigoufyp.R;
 import com.xavier.daigoufyp.controller.network.AbsRequestListener;
 import com.xavier.daigoufyp.controller.network.request.GetProductDetailRequest;
 import com.xavier.daigoufyp.controller.page.abs.AbsSpiceActivity;
+import com.xavier.daigoufyp.controller.page.abs.AbsSpiceBackActivity;
+import com.xavier.daigoufyp.model.Product;
 import com.xavier.daigoufyp.model.ProductPicture;
 import com.xavier.daigoufyp.model.response.ProductResponse;
 import com.xavier.daigoufyp.utils.TimerHelper;
+import com.xavier.daigoufyp.utils.Utils;
 import com.xavier.daigoufyp.view.product.ProductPictureView;
 
 import roboguice.inject.ContentView;
@@ -18,7 +27,7 @@ import roboguice.inject.InjectExtra;
 import roboguice.inject.InjectView;
 
 @ContentView(R.layout.activity_product_detail)
-public class ProductDetailActivity extends AbsSpiceActivity {
+public class ProductDetailActivity extends AbsSpiceBackActivity {
 
     @InjectExtra(value = "product_id", optional = false)
     int product_id;
@@ -47,16 +56,24 @@ public class ProductDetailActivity extends AbsSpiceActivity {
     @InjectView(R.id.productRemarkTextView)
     TextView productRemarkTextView;
 
+    @InjectView(R.id.progressbar)
+    ProgressBar progressbar;
+
+    @InjectView(R.id.contentLinearLayout)
+    LinearLayout contentLinearLayout;
+
+    @InjectView(R.id.wantToBuyProductButton)
+    Button wantToBuyProductButton;
+
     TimerHelper timerHelper;
+
+    Product mProduct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
-        }
+        progressbar.setVisibility(View.VISIBLE);
 
         getSpiceManger().execute(
                 new GetProductDetailRequest(this, product_id),
@@ -65,29 +82,29 @@ public class ProductDetailActivity extends AbsSpiceActivity {
         timerHelper = new TimerHelper(this);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case android.R.id.home:
-                break;
-        }
-        return true;
-    }
-
     public class GetProductDetailRequestListener extends AbsRequestListener<ProductResponse> {
 
         @Override
         public void onSuccess(ProductResponse productResponse) {
+            mProduct = productResponse.product;
+            progressbar.setVisibility(View.GONE);
+            wantToBuyProductButton.setVisibility(View.VISIBLE);
+            contentLinearLayout.setVisibility(View.VISIBLE);
+
+            ViewGroup.LayoutParams params = productPictureView.getLayoutParams();
+            params.height = (int) (Utils.screenWidth * Utils.hdRatio);
+            productPictureView.setLayoutParams(params);
+
             productPictureView.bindModel(productResponse.product.product_pics, new ProductPictureView.ProductPictureListener() {
                 @Override
                 public void onPictureClick(ProductPicture productPicture) {
-
                 }
             });
+
             productNameTextView.setText(productResponse.product.product_name);
             productCategoryTextView.setText(productResponse.product.category);
             productCountryTextView.setText(productResponse.product.country);
-            productQuantityTextView.setText(productResponse.product.quantity);
+            productQuantityTextView.setText("" + productResponse.product.quantity);
             productDescriptionTextView.setText(productResponse.product.product_description);
             productRemarkTextView.setText(productResponse.product.remark);
             timerHelper.setTimerHelperListener(new TimerHelper.TimerHelperListener() {
@@ -111,7 +128,14 @@ public class ProductDetailActivity extends AbsSpiceActivity {
 
         @Override
         public void onFailure(String msg) {
-
+            progressbar.setVisibility(View.GONE);
+            Utils.showFailureSnackbar(findViewById(android.R.id.content), msg);
         }
+    }
+
+    public void onWantToBuyClick(View v) {
+        Intent i = new Intent(this, ProductConfirmBuyActivity.class);
+        i.putExtra("PRODUCT_OBJ", mProduct);
+        startActivity(i);
     }
 }

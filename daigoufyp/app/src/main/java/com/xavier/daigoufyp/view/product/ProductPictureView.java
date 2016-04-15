@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 
+import com.viewpagerindicator.CirclePageIndicator;
 import com.xavier.daigoufyp.R;
 import com.xavier.daigoufyp.controller.adapter.pager.ProductPicturePagerAdapter;
 import com.xavier.daigoufyp.model.ProductPicture;
@@ -25,6 +26,8 @@ public class ProductPictureView extends FrameLayout {
     @InjectView(R.id.pictureViewPager)
     ViewPager pictureViewPager;
 
+    @InjectView(R.id.pageIndicator)
+    CirclePageIndicator pageIndicator;
 
     public ProductPictureView(Context context) {
         super(context);
@@ -58,6 +61,7 @@ public class ProductPictureView extends FrameLayout {
         this.listener = listener;
         ProductPicturePagerAdapter adapter = new ProductPicturePagerAdapter(context, productPictureList, listener);
         pictureViewPager.setAdapter(adapter);
+        pageIndicator.setViewPager(pictureViewPager);
     }
 
     private ProductPictureListener listener;
