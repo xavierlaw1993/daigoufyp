@@ -10,7 +10,6 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +17,7 @@ import android.view.MenuItem;
 import com.facebook.FacebookSdk;
 import com.xavier.daigoufyp.R;
 import com.xavier.daigoufyp.controller.page.abs.AbsSpiceActivity;
+import com.xavier.daigoufyp.controller.page.product.NewProductFragment;
 
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
@@ -33,23 +33,11 @@ public class MainActivity extends AbsSpiceActivity implements NavigationView.OnN
     @InjectView(R.id.nav_view)
     NavigationView navigationView;
 
-    @InjectView(R.id.newProductFloatActionButton)
-    FloatingActionButton newProductFloatActionButton;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         FacebookSdk.sdkInitialize(getApplicationContext());
         super.onCreate(savedInstanceState);
         setSupportActionBar(toolbar);
-
-        newProductFloatActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -106,10 +94,10 @@ public class MainActivity extends AbsSpiceActivity implements NavigationView.OnN
             case R.id.nav_home:
                 fragmentClass = HomeFragment.class;
                 break;
-            case R.id.nav_gallery:
-                fragmentClass = HomeFragment.class;
+            case R.id.nav_create_product:
+                fragmentClass = NewProductFragment.class;
                 break;
-            case R.id.nav_slideshow:
+            case R.id.nav_create_shop:
                 fragmentClass = HomeFragment.class;
                 break;
             case R.id.nav_manage:
@@ -137,7 +125,6 @@ public class MainActivity extends AbsSpiceActivity implements NavigationView.OnN
 
         // Highlight the selected item has been done by NavigationView
         item.setChecked(true);
-
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }

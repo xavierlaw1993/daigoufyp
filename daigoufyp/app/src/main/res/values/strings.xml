@@ -14,7 +14,13 @@
     <string name="product__confirm_to_buy">Confirm to buy</string>
     <string name="product__quantity">Quantity</string>
     <string name="product__price">Price</string>
-
+    <string name="create__next">Next</string>
+    <string name="create_product__name_hint">Please enter the name of your product</string>
+    <string name="create_product__image_hint">Please choose a picture/photo for your product</string>
+    <string name="create_product__add_more_image_hint">You can add more pictures/photos to describe your product</string>
+    <string name="create_product__add_more_image">Add more</string>
+    <string name="popup__intent_action_camera">Take photo from Camera</string>
+    <string name="popup__intent_action_gallery">Select photo from Gallery</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

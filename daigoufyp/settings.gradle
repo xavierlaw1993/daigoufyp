@@ -1,1 +1,1 @@
-include ':app', ':lib-viewpagerindicator'
+include ':app', ':lib-viewpagerindicator', ':lib-imagepicker'

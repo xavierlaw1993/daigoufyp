@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".controller.DagiouFypApplication"
@@ -38,7 +40,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".controller.page.create.NewProductActivity"
+            android:name=".controller.page.product.NewProductDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".controller.page.product.NewProductAttributeActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".controller.page.product.ProductDetailActivity"
@@ -47,12 +52,18 @@
             android:name=".controller.page.product.ProductConfirmBuyActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".controller.page.create.NewShopActivity"
+            android:name=".controller.page.shop.NewShopActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".controller.page.shop.ShopDetailActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".controller.page.FullScreenPictureActivity" />
+        <activity
+            android:name=".utils.GalleryUtil"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".utils.CameraUtil"
+            android:screenOrientation="portrait" />
 
         <provider
             android:name="com.facebook.FacebookContentProvider"

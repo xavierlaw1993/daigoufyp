@@ -1,4 +1,4 @@
-package com.xavier.daigoufyp.controller.page.create;
+package com.xavier.daigoufyp.controller.page.shop;
 
 import android.os.Bundle;
 

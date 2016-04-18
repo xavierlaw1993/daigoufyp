@@ -2,7 +2,6 @@ package com.xavier.daigoufyp.controller.page.product;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.xavier.daigoufyp.R;
@@ -42,6 +41,6 @@ public class ProductConfirmBuyActivity extends AbsSpiceBackActivity {
     }
 
     public void onConfirmToBuyClick(View v) {
-
+        //TODO create an order
     }
 }
