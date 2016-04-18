@@ -51,4 +51,5 @@ dependencies {
     compile 'com.android.support:support-v4:23.3.0'
     compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
     compile project(':lib-viewpagerindicator')
+    compile project(':lib-imagepicker')
 }

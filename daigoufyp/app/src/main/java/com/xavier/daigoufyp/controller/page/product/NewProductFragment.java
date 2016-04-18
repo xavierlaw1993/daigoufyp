@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -23,6 +24,9 @@ import com.xavier.daigoufyp.utils.CameraUtil;
 import com.xavier.daigoufyp.utils.GalleryUtil;
 import com.xavier.daigoufyp.utils.Utils;
 import com.xavier.daigoufyp.view.IntentActionDialog;
+
+import net.yazeed44.imagepicker.model.ImageEntry;
+import net.yazeed44.imagepicker.util.Picker;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -98,11 +102,25 @@ public class NewProductFragment extends AbsSpiceFragment {
         addMorePicturesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                new Picker.Builder(this, this, R.style.MIP_theme)
-//                        .setPickMode(Picker.PickMode.MULTIPLE_IMAGES)
-//                        .setLimit(6)
-//                        .build()
-//                        .startActivity();
+                new Picker.Builder(getActivity(), new Picker.PickListener() {
+                    @Override
+                    public void onPickedSuccessfully(ArrayList<ImageEntry> images) {
+                        addedPicturesCountTextView.setText("+" + images.size());
+                        for (ImageEntry imageEntry : images) {
+                            imageBitmapList.clear();
+                            imageBitmapList.add(decodeSampledBitmapFromResource(imageEntry.path,
+                                    Utils.screenWidth, (int) (Utils.screenWidth * Utils.hdRatio)));
+                        }
+                    }
+
+                    @Override
+                    public void onCancel() {
+                    }
+                }, R.style.MIP_theme)
+                        .setPickMode(Picker.PickMode.MULTIPLE_IMAGES)
+                        .setLimit(6)
+                        .build()
+                        .startActivity();
             }
         });
 
@@ -184,5 +202,35 @@ public class NewProductFragment extends AbsSpiceFragment {
             String errorMessage = "your device doesn't support the crop action!";
             Utils.showFailureSnackbar(getView(), errorMessage);
         }
+    }
+
+    public Bitmap decodeSampledBitmapFromResource(String resId, int reqWidth, int reqHeight) {
+        // First decode with inJustDecodeBounds=true to check dimensions
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(resId, options);
+
+        // Calculate inSampleSize
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+
+        // Decode bitmap with inSampleSize set
+        options.inJustDecodeBounds = false;
+        return BitmapFactory.decodeFile(resId, options);
+    }
+
+    public int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        // Raw height and width of image
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 2;
+
+        if (height > reqHeight || width > reqWidth) {
+            if (width > height) {
+                inSampleSize = Math.round((float) height / (float) reqHeight);
+            } else {
+                inSampleSize = Math.round((float) width / (float) reqWidth);
+            }
+        }
+        return inSampleSize;
     }
 }
