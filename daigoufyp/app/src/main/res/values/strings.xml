@@ -19,6 +19,8 @@
     <string name="create_product__image_hint">Please choose a picture/photo for your product</string>
     <string name="create_product__add_more_image_hint">You can add more pictures/photos to describe your product</string>
     <string name="create_product__add_more_image">Add more</string>
+    <string name="create_product__description_hint">Please enter the description of your product</string>
+    <string name="create_product__remark_hint">You can provide some extra remark here</string>
     <string name="popup__intent_action_camera">Take photo from Camera</string>
     <string name="popup__intent_action_gallery">Select photo from Gallery</string>
 
