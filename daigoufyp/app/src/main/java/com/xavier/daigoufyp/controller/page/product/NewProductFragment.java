@@ -63,7 +63,7 @@ public class NewProductFragment extends AbsSpiceFragment {
     @InjectView(R.id.nextButton)
     Button nextButton;
 
-    List<Bitmap> imageBitmapList = new ArrayList<>();
+    ArrayList<Bitmap> imageBitmapList = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -127,11 +127,19 @@ public class NewProductFragment extends AbsSpiceFragment {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                imageBitmapList.add(((BitmapDrawable) (productMainPictureImageView.getDrawable())).getBitmap());
-                Intent i = new Intent(getActivity(), NewProductDetailActivity.class);
-                i.putExtra("PRODUCT_NAME", productNameEditText.getEditableText().toString());
-                i.putExtra("PRODUCT_PICS_BITMAP_LIST", (Parcelable) imageBitmapList);
-                startActivity(i);
+//                if (productMainPictureImageView.getDrawable() == null) {
+//                    Utils.showFailureSnackbar(getView(),
+//                            "You need to select a main image for your product");
+//                } else if (TextUtils.isEmpty(productNameEditText.getEditableText()))
+//                    Utils.showFailureSnackbar(getView(),
+//                            "You need to enter a name for your product");
+//                else {
+//                    imageBitmapList.add(((BitmapDrawable) (productMainPictureImageView.getDrawable())).getBitmap());
+                    Intent i = new Intent(getActivity(), NewProductDetailActivity.class);
+//                    i.putExtra("PRODUCT_NAME", productNameEditText.getEditableText().toString());
+//                    i.putParcelableArrayListExtra("PRODUCT_PICS_BITMAP_LIST", imageBitmapList);
+                    startActivity(i);
+//                }
             }
         });
     }

@@ -7,10 +7,10 @@
     <ImageView
         android:id="@+id/productMainPictureImageView"
         android:layout_width="match_parent"
-        android:scaleType="centerCrop"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/quater_margin"
-        android:background="@drawable/shape_rect_blue_border" />
+        android:layout_margin="@dimen/half_margin"
+        android:background="@drawable/shape_rect_blue_border"
+        android:scaleType="centerCrop" />
 
     <ImageView
         android:id="@+id/emptyThumbnailImageView"
@@ -36,59 +36,72 @@
         android:layout_below="@+id/productMainPictureImageView"
         android:orientation="vertical">
 
-        <View
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray" />
-
-        <TextView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/half_margin"
-            android:src="@drawable/ic_photo_camera_black_36dp"
-            android:text="@string/create_product__add_more_image_hint" />
+            android:layout_margin="@dimen/half_margin"
+            android:background="@drawable/shape_rect_blue_border"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/half_margin"
+                android:src="@drawable/ic_photo_camera_black_36dp"
+                android:text="@string/create_product__add_more_image_hint"
+                android:textColor="@color/colorTextSecondary" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/half_margin">
+
+                <Button
+                    android:id="@+id/addMorePicturesButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/create_product__add_more_image" />
+
+                <TextView
+                    android:id="@+id/addedPicturesCountTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/half_margin" />
+            </LinearLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="@dimen/half_margin">
-
-            <Button
-                android:id="@+id/addMorePicturesButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/create_product__add_more_image" />
+            android:layout_margin="@dimen/half_margin"
+            android:background="@drawable/shape_rect_blue_border"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/addedPicturesCountTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/half_margin"
+                android:src="@drawable/ic_photo_camera_black_36dp"
+                android:text="@string/create_product__name_hint"
+                android:textColor="@color/colorTextSecondary" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <EditText
+                android:id="@+id/productNameEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/half_margin" />
+                android:padding="@dimen/half_margin" />
         </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/half_margin"
-            android:src="@drawable/ic_photo_camera_black_36dp"
-            android:text="@string/create_product__name_hint" />
-
-        <EditText
-            android:id="@+id/productNameEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/half_margin" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray" />
     </LinearLayout>
 
     <Button

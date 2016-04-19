@@ -11,23 +11,34 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
             android:padding="@dimen/fab_margin"
-            android:text="@string/product__quantity"
-            android:textColor="@color/colorWhite" />
+            android:text="@string/product__quantity" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
 
         <com.xavier.daigoufyp.view.CustomSpinnerView
             android:id="@+id/quantitySpinnerView"
             android:layout_width="match_parent"
             android:layout_height="@dimen/view_custom_spinner_height" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
             android:padding="@dimen/fab_margin"
-            android:text="@string/product__price"
-            android:textColor="@color/colorWhite" />
+            android:text="@string/product__price" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
 
         <TextView
             android:id="@+id/totalPriceTextView"
@@ -41,7 +52,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/colorPrimary" />
+            android:background="@android:color/darker_gray" />
     </LinearLayout>
 
     <Button

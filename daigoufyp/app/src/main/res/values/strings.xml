@@ -15,12 +15,21 @@
     <string name="product__quantity">Quantity</string>
     <string name="product__price">Price</string>
     <string name="create__next">Next</string>
-    <string name="create_product__name_hint">Please enter the name of your product</string>
-    <string name="create_product__image_hint">Please choose a picture/photo for your product</string>
-    <string name="create_product__add_more_image_hint">You can add more pictures/photos to describe your product</string>
+    <string name="create_product__name_hint">The name of your product</string>
+    <string name="create_product__image_hint">Choose a picture/photo for your product</string>
+    <string name="create_product__add_more_image_hint">You can add more pictures/photos to describe your product(max:+6)</string>
     <string name="create_product__add_more_image">Add more</string>
-    <string name="create_product__description_hint">Please enter the description of your product</string>
+    <string name="create_product__description_hint">The description of your product</string>
     <string name="create_product__remark_hint">You can provide some extra remark here</string>
+    <string name="create_product__create_product">Create Product</string>
+    <string name="create_product__category_hint">The category of your product</string>
+    <string name="create_product__country_hint">The country of your product from</string>
+    <string name="create_product__price_hint">The price per product</string>
+    <string name="create_product__quantity_hint">Quantities of the product you want to sell</string>
+    <string name="create_product__duration_hint">Duration of the product you want to sell</string>
+    <string name="create_product__week_unit">week(s)</string>
+    <string name="create_product__day_unit">day(s)</string>
+    <string name="create_product__hour_unit">hour(s)</string>
     <string name="popup__intent_action_camera">Take photo from Camera</string>
     <string name="popup__intent_action_gallery">Select photo from Gallery</string>
 

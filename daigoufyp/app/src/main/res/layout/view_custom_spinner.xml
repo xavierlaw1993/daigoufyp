@@ -9,13 +9,12 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:padding="@dimen/half_margin"
-        android:src="@drawable/ic_navigate_before_black_48dp" />
+        android:src="@drawable/ic_remove_black_24dp" />
 
     <View
         android:layout_width="1dp"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary" />
-
+        android:background="@android:color/darker_gray" />
 
     <EditText
         android:id="@+id/contentEditText"
@@ -26,6 +25,7 @@
         android:cursorVisible="false"
         android:gravity="center"
         android:inputType="number"
+        android:maxLength="4"
         android:padding="@dimen/half_margin"
         android:textAppearance="@style/TextAppearanceLarge"
         android:textColor="@color/colorAccent" />
@@ -33,12 +33,12 @@
     <View
         android:layout_width="1dp"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary" />
+        android:background="@android:color/darker_gray" />
 
     <ImageView
         android:id="@+id/riseImageView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:padding="@dimen/half_margin"
-        android:src="@drawable/ic_navigate_next_black_48dp" />
+        android:src="@drawable/ic_add_black_24dp" />
 </LinearLayout>

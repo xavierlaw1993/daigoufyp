@@ -3,6 +3,9 @@ package com.xavier.daigoufyp.view;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -63,6 +66,7 @@ public class CustomSpinnerView extends LinearLayout {
 
     public void bindModel(final int minValue, final int maxValue, boolean showAsSpinner) {
         contentEditText.setText("" + minValue);
+        contentEditText.setMaxEms(String.valueOf(maxValue).length());
         if (!showAsSpinner) {
             dropImageView.setVisibility(GONE);
             riseImageView.setVisibility(GONE);
@@ -70,21 +74,40 @@ public class CustomSpinnerView extends LinearLayout {
         riseImageView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.v(TAG, "value=" + contentEditText.getEditableText().toString());
+//                Log.v(TAG, "value=" + contentEditText.getEditableText().toString());
                 int newValue = Integer.parseInt(contentEditText.getEditableText().toString()) + 1;
                 contentEditText.setText("" + (newValue <= maxValue ? newValue : maxValue));
-                if (listener != null)
-                    listener.onQuantityChange(Integer.parseInt(contentEditText.getEditableText().toString()));
             }
         });
         dropImageView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.v(TAG, "value=" + contentEditText.getEditableText().toString());
+//                Log.v(TAG, "value=" + contentEditText.getEditableText().toString());
                 int newValue = Integer.parseInt(contentEditText.getEditableText().toString()) - 1;
                 contentEditText.setText("" + (newValue >= minValue ? newValue : minValue));
-                if (listener != null)
-                    listener.onQuantityChange(Integer.parseInt(contentEditText.getEditableText().toString()));
+            }
+        });
+        contentEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Log.v(TAG, "onTextChanged value=" + contentEditText.getEditableText().toString());
+                try {
+                    if (TextUtils.isEmpty(contentEditText.getEditableText()))
+                        contentEditText.setText("" + minValue);
+                    if (listener != null)
+                        listener.onQuantityChange(Integer.parseInt(contentEditText.getEditableText().toString()));
+                } catch (Exception ex) {
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
     }
