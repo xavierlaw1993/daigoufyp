@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -66,7 +67,12 @@ public class CustomSpinnerView extends LinearLayout {
 
     public void bindModel(final int minValue, final int maxValue, boolean showAsSpinner) {
         contentEditText.setText("" + minValue);
-        contentEditText.setMaxEms(String.valueOf(maxValue).length());
+
+        int length = String.valueOf(maxValue).length();
+        InputFilter[] fArray = new InputFilter[1];
+        fArray[0] = new InputFilter.LengthFilter(length);
+        contentEditText.setFilters(fArray);
+        
         if (!showAsSpinner) {
             dropImageView.setVisibility(GONE);
             riseImageView.setVisibility(GONE);
