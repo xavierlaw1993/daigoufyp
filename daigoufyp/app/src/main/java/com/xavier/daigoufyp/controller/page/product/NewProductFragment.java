@@ -136,7 +136,7 @@ public class NewProductFragment extends AbsSpiceFragment {
 //                else {
 //                    imageBitmapList.add(((BitmapDrawable) (productMainPictureImageView.getDrawable())).getBitmap());
                     Intent i = new Intent(getActivity(), NewProductDetailActivity.class);
-//                    i.putExtra("PRODUCT_NAME", productNameEditText.getEditableText().toString());
+                    i.putExtra("PRODUCT_NAME", productNameEditText.getEditableText().toString());
 //                    i.putParcelableArrayListExtra("PRODUCT_PICS_BITMAP_LIST", imageBitmapList);
                     startActivity(i);
 //                }

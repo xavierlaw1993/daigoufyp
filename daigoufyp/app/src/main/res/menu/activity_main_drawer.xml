@@ -14,23 +14,34 @@
             android:id="@+id/nav_create_shop"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Create a shop" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+
+        <item android:title="Personal">
+            <menu>
+                <item
+                    android:id="@+id/nav_profile"
+                    android:icon="@drawable/ic_menu_preferences"
+                    android:title="My Profile" />
+                <item
+                    android:id="@+id/nav_order"
+                    android:icon="@drawable/ic_menu_preferences"
+                    android:title="My Order" />
+                <item
+                    android:id="@+id/nav_product"
+                    android:icon="@drawable/ic_menu_preferences"
+                    android:title="My Product" />
+                <item
+                    android:id="@+id/nav_shop"
+                    android:icon="@drawable/ic_menu_preferences"
+                    android:title="My Shop" />
+            </menu>
+        </item>
+        <item android:title="Other">
+            <menu>
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/ic_menu_preferences"
+                    android:title="Logout" />
+            </menu>
+        </item>
     </group>
-
-    <item android:title="Preference">
-        <menu>
-            <item
-                android:id="@+id/nav_profile"
-                android:icon="@drawable/ic_menu_preferences"
-                android:title="Profile" />
-            <item
-                android:id="@+id/nav_preference"
-                android:icon="@drawable/ic_menu_preferences"
-                android:title="Setting" />
-        </menu>
-    </item>
-
 </menu>

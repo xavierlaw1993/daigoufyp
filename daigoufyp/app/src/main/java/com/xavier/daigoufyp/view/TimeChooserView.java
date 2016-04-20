@@ -79,7 +79,7 @@ public class TimeChooserView extends LinearLayout {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try {
                     Log.v(TAG, "s.toString() " + s.toString());
-                    weekEditText.setText(decimalFormat.format(Integer.parseInt(s.toString())));
+//                    weekEditText.setText(decimalFormat.format(Integer.parseInt(s.toString())));
                     if (TextUtils.isEmpty(s.toString()))
                         weekEditText.setText("00");
                     if (listener != null)
@@ -102,7 +102,7 @@ public class TimeChooserView extends LinearLayout {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try {
-                    dayEditText.setText(decimalFormat.format(Integer.parseInt(s.toString())));
+//                    dayEditText.setText(decimalFormat.format(Integer.parseInt(s.toString())));
                     if (TextUtils.isEmpty(s.toString()))
                         dayEditText.setText("00");
                     if (listener != null)
@@ -125,7 +125,7 @@ public class TimeChooserView extends LinearLayout {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 try {
-                    hourEditText.setText(decimalFormat.format(Integer.parseInt(s.toString())));
+//                    hourEditText.setText(decimalFormat.format(Integer.parseInt(s.toString())));
                     if (Integer.parseInt(s.toString()) > 23)
                         hourEditText.setText("23");
                     if (TextUtils.isEmpty(s.toString()))

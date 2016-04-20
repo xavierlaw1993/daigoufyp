@@ -32,6 +32,9 @@ public class User {
     public String user_name;
 
     @Expose
+    public String user_description;
+
+    @Expose
     public String user_profile_pic;
 
     @Expose
@@ -46,6 +49,7 @@ public class User {
                 "user_id='" + user_id + '\'' +
                 ", user_email='" + user_email + '\'' +
                 ", user_name='" + user_name + '\'' +
+                ", user_description='" + user_description + '\'' +
                 ", user_profile_pic='" + user_profile_pic + '\'' +
                 ", user_phone='" + user_phone + '\'' +
                 ", delivery_address='" + delivery_address + '\'' +
@@ -61,6 +65,7 @@ public class User {
             user_id = savedUser.user_id;
             user_email = savedUser.user_email;
             user_name = savedUser.user_name;
+            user_description = savedUser.user_description;
             user_profile_pic = savedUser.user_profile_pic;
             user_phone = savedUser.user_phone;
             delivery_address = savedUser.delivery_address;
@@ -74,6 +79,7 @@ public class User {
         user_email = user.user_email;
         user_name = user.user_name;
         user_profile_pic = user.user_profile_pic;
+        user_description = user.user_description;
         user_phone = user.user_phone;
         delivery_address = user.delivery_address;
         return this;
@@ -83,6 +89,7 @@ public class User {
         user_id = null;
         user_email = null;
         user_name = null;
+        user_description = null;
         user_profile_pic = null;
         user_phone = null;
         delivery_address = null;

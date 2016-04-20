@@ -72,7 +72,7 @@ public class CustomSpinnerView extends LinearLayout {
         InputFilter[] fArray = new InputFilter[1];
         fArray[0] = new InputFilter.LengthFilter(length);
         contentEditText.setFilters(fArray);
-        
+
         if (!showAsSpinner) {
             dropImageView.setVisibility(GONE);
             riseImageView.setVisibility(GONE);
@@ -101,12 +101,12 @@ public class CustomSpinnerView extends LinearLayout {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                Log.v(TAG, "onTextChanged value=" + contentEditText.getEditableText().toString());
+                Log.v(TAG, "onTextChanged value=" + s.toString());
                 try {
-                    if (TextUtils.isEmpty(contentEditText.getEditableText()))
+                    if (TextUtils.isEmpty(s.toString()))
                         contentEditText.setText("" + minValue);
                     if (listener != null)
-                        listener.onQuantityChange(Integer.parseInt(contentEditText.getEditableText().toString()));
+                        listener.onQuantityChange(Integer.parseInt(s.toString()));
                 } catch (Exception ex) {
                 }
             }

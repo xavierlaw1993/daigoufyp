@@ -26,13 +26,13 @@ public class DaigouFypSerivce extends RetrofitGsonSpiceService {
                 .setConverter(new GsonConverter(new GsonBuilder()
                         .excludeFieldsWithoutExposeAnnotation()
                         .create()))
-//                .setRequestInterceptor(new RequestInterceptor() {
-//                    @Override
-//                    public void intercept(RequestFacade request) {
+                .setRequestInterceptor(new RequestInterceptor() {
+                    @Override
+                    public void intercept(RequestFacade request) {
 //                        request.addHeader("Content-Type", "application/json");
 //                        request.addHeader("Accept-Language", CLPConsumerApplication.getInstance().getAppLanguage());
-//                    }
-//                })
+                    }
+                })
 //                .setClient(new OkClient(client))
                 .setLogLevel(RestAdapter.LogLevel.BASIC);
         return restAdapterBuilder;

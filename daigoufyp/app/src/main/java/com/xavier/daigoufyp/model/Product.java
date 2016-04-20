@@ -17,7 +17,7 @@ public class Product implements Parcelable {
     public int product_id;
 
     @Expose
-    public int user_id;
+    public String user_id;
 
     @Expose
     public String product_name;
@@ -51,7 +51,7 @@ public class Product implements Parcelable {
 
     protected Product(Parcel in) {
         product_id = in.readInt();
-        user_id = in.readInt();
+        user_id = in.readString();
         product_name = in.readString();
         product_description = in.readString();
         product_create_time = in.readLong();
@@ -79,7 +79,7 @@ public class Product implements Parcelable {
     public String toString() {
         return "Product{" +
                 "product_id=" + product_id +
-                ", user_id=" + user_id +
+                ", user_id='" + user_id + '\'' +
                 ", product_name='" + product_name + '\'' +
                 ", product_pics=" + product_pics +
                 ", product_description='" + product_description + '\'' +
@@ -101,7 +101,7 @@ public class Product implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(product_id);
-        dest.writeInt(user_id);
+        dest.writeString(user_id);
         dest.writeString(product_name);
         dest.writeString(product_description);
         dest.writeLong(product_create_time);

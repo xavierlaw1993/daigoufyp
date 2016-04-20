@@ -44,7 +44,7 @@ public class NewProductDetailActivity extends AbsSpiceBackActivity {
                         i.putExtras(getIntent().getExtras());
                     i.putExtra("PRODUCT_DESCRIPTION", descriptionEditText.getEditableText());
                     if (!TextUtils.isEmpty(remarkEditText.getEditableText()))
-                        i.putExtra("REMARK", remarkEditText.getEditableText());
+                        i.putExtra("PRODUCT_REMARK", remarkEditText.getEditableText());
                     startActivity(i);
                 } else {
                     Utils.showFailureSnackbar(findViewById(android.R.id.content),

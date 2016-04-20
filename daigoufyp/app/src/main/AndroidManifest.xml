@@ -87,6 +87,7 @@
             android:name=".controller.network.DaigouFypSerivce"
             android:exported="false" />
 
+        <activity android:name=".controller.page.order.MyOrderActivity"></activity>
     </application>
 
 </manifest>

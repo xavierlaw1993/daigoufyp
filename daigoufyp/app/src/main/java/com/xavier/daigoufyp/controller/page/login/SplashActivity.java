@@ -3,6 +3,7 @@ package com.xavier.daigoufyp.controller.page.login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.google.inject.Inject;
@@ -17,6 +18,7 @@ import roboguice.inject.ContentView;
 @ContentView(R.layout.activity_splash)
 public class SplashActivity extends RoboActivity {
     private static String TAG = "SplashActivity";
+
     @Inject
     User user;
 
@@ -32,9 +34,9 @@ public class SplashActivity extends RoboActivity {
                 /**
                  * TODO: need to uncomment
                  */
-//                if (TextUtils.isEmpty(user.userId))
-//                    i.setClass(SplashActivity.this, LoginActivity.class);
-//                else
+                if (TextUtils.isEmpty(user.user_id))
+                    i.setClass(SplashActivity.this, LoginActivity.class);
+                else
                     i.setClass(SplashActivity.this, MainActivity.class);
                 startActivity(i);
             }

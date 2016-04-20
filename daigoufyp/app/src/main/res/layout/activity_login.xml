@@ -27,13 +27,11 @@
         android:layout_centerInParent="true"
         android:padding="@dimen/three_forth_margin" />
 
-    <!--<Button-->
-        <!--android:id="@+id/emailLoginButton"-->
-        <!--android:layout_width="120dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@+id/facebookLoginButton"-->
-        <!--android:layout_centerInParent="true"-->
-        <!--android:onClick="onEmailLoginClick"-->
-        <!--android:padding="@dimen/three_forth_margin"-->
-        <!--android:text="@string/login__email_login_btn" />-->
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/progressbar"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </RelativeLayout>

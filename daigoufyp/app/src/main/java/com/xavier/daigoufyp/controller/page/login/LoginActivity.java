@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -16,9 +17,13 @@ import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.google.inject.Inject;
 import com.xavier.daigoufyp.R;
+import com.xavier.daigoufyp.controller.network.AbsRequestListener;
+import com.xavier.daigoufyp.controller.network.request.LoginRequest;
 import com.xavier.daigoufyp.controller.page.abs.AbsSpiceActivity;
 import com.xavier.daigoufyp.controller.page.home.MainActivity;
 import com.xavier.daigoufyp.model.User;
+import com.xavier.daigoufyp.model.response.UserResponse;
+import com.xavier.daigoufyp.utils.Utils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -39,6 +44,9 @@ public class LoginActivity extends AbsSpiceActivity {
     Button facebookLoginButton;
 
     CallbackManager callbackManager;
+
+    @InjectView(R.id.progressbar)
+    ProgressBar progressbar;
 
     @Inject
     User user;
@@ -62,13 +70,18 @@ public class LoginActivity extends AbsSpiceActivity {
                         User newUser = new User(LoginActivity.this);
                         try {
                             newUser.user_id = bFacebookData.getString("facebook_id");
+                            newUser.user_profile_pic = bFacebookData.getString("profile_pic");
                             newUser.user_name = bFacebookData.getString("first_name").concat(" ").concat(bFacebookData.getString("last_name"));
                             newUser.user_email = bFacebookData.getString("email");
-                            newUser.user_phone = bFacebookData.getString("phone");
                             user.updateUser(newUser).commit();
-                            Intent i = new Intent(LoginActivity.this, MainActivity.class);
-                            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                            startActivity(i);
+
+                            progressbar.setVisibility(View.VISIBLE);
+                            getSpiceManger().execute(
+                                    new LoginRequest(LoginActivity.this,
+                                            user.user_id, user.user_name,
+                                            user.user_email, user.user_profile_pic),
+                                    new LoginRequestListener());
+
                         } catch (Exception ex) {
                             ex.printStackTrace();
                         }
@@ -97,6 +110,25 @@ public class LoginActivity extends AbsSpiceActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private class LoginRequestListener extends AbsRequestListener<UserResponse> {
+
+        @Override
+        public void onSuccess(UserResponse userResponse) {
+            progressbar.setVisibility(View.GONE);
+            if (userResponse.user != null)
+                user.updateUser(userResponse.user).commit();
+            Intent i = new Intent(LoginActivity.this, MainActivity.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(i);
+        }
+
+        @Override
+        public void onFailure(String msg) {
+            progressbar.setVisibility(View.GONE);
+            Utils.showFailureSnackbar(findViewById(android.R.id.content), msg);
+        }
     }
 
     public void onFacebookLoginClick(View v) {
@@ -130,8 +162,6 @@ public class LoginActivity extends AbsSpiceActivity {
                 bundle.putString("last_name", object.getString("last_name"));
             if (object.has("email"))
                 bundle.putString("email", object.getString("email"));
-            if (object.has("gender"))
-                bundle.putString("gender", object.getString("gender"));
             return bundle;
         } catch (JSONException e) {
             e.printStackTrace();

@@ -1,5 +1,6 @@
 package com.xavier.daigoufyp.controller.page.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,17 +14,28 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
+import com.google.inject.Inject;
+import com.squareup.picasso.Picasso;
 import com.xavier.daigoufyp.R;
 import com.xavier.daigoufyp.controller.page.abs.AbsSpiceActivity;
+import com.xavier.daigoufyp.controller.page.login.LoginActivity;
 import com.xavier.daigoufyp.controller.page.product.NewProductFragment;
+import com.xavier.daigoufyp.model.User;
 
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
 
 @ContentView(R.layout.activity_main)
 public class MainActivity extends AbsSpiceActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    @Inject
+    User user;
+
     @InjectView(R.id.toolbar)
     Toolbar toolbar;
 
@@ -49,6 +61,19 @@ public class MainActivity extends AbsSpiceActivity implements NavigationView.OnN
         //default set home fragment
         if (savedInstanceState == null) {
             navigationView.getMenu().performIdentifierAction(R.id.nav_home, 0);
+        }
+
+        View headerView = navigationView.getHeaderView(0);
+        ImageView userIconImageView = (ImageView) headerView.findViewById(R.id.userIconImageView);
+        TextView userNameTextView = (TextView) headerView.findViewById(R.id.userNameTextView);
+        TextView userEmailTextView = (TextView) headerView.findViewById(R.id.userEmailTextView);
+        try {
+            Picasso.with(this)
+                    .load(user.user_profile_pic)
+                    .into(userIconImageView);
+            userNameTextView.setText(user.user_name);
+            userEmailTextView.setText(user.user_email);
+        } catch (Exception ex) {
         }
     }
 
@@ -100,32 +125,44 @@ public class MainActivity extends AbsSpiceActivity implements NavigationView.OnN
             case R.id.nav_create_shop:
                 fragmentClass = HomeFragment.class;
                 break;
-            case R.id.nav_manage:
-                fragmentClass = HomeFragment.class;
-                break;
             case R.id.nav_profile:
                 fragmentClass = HomeFragment.class;
                 break;
-            case R.id.nav_preference:
+            case R.id.nav_order:
                 fragmentClass = HomeFragment.class;
+                break;
+            case R.id.nav_product:
+                fragmentClass = HomeFragment.class;
+                break;
+            case R.id.nav_shop:
+                fragmentClass = HomeFragment.class;
+                break;
+            case R.id.nav_logout:
+                fragmentClass = null;
+                LoginManager.getInstance().logOut();
+                user.clearUser().commit();
+                Intent i = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(i);
+                finish();
                 break;
             default:
                 fragmentClass = HomeFragment.class;
                 break;
         }
-        try {
-            fragment = (Fragment) fragmentClass.newInstance();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (fragmentClass != null) {
+            try {
+                fragment = (Fragment) fragmentClass.newInstance();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            // Insert the fragment by replacing any existing fragment
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+
+            // Highlight the selected item has been done by NavigationView
+            item.setChecked(true);
+            drawerLayout.closeDrawer(GravityCompat.START);
         }
-
-        // Insert the fragment by replacing any existing fragment
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
-
-        // Highlight the selected item has been done by NavigationView
-        item.setChecked(true);
-        drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
 }

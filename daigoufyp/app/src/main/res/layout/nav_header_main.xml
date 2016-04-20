@@ -15,14 +15,13 @@
         android:id="@+id/userIconImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:paddingBottom="@dimen/half_margin"
         android:src="@android:drawable/sym_def_app_icon" />
 
     <TextView
         android:id="@+id/userNameTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="userName"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
