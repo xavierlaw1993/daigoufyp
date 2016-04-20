@@ -14,9 +14,10 @@
             android:id="@+id/nav_create_shop"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Create a shop" />
-
-        <item android:title="Personal">
-            <menu>
+    </group>
+    <item android:title="Personal">
+        <menu>
+            <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/nav_profile"
                     android:icon="@drawable/ic_menu_preferences"
@@ -33,15 +34,17 @@
                     android:id="@+id/nav_shop"
                     android:icon="@drawable/ic_menu_preferences"
                     android:title="My Shop" />
-            </menu>
-        </item>
-        <item android:title="Other">
-            <menu>
+            </group>
+        </menu>
+    </item>
+    <item android:title="Other">
+        <menu>
+            <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/nav_logout"
                     android:icon="@drawable/ic_menu_preferences"
                     android:title="Logout" />
-            </menu>
-        </item>
-    </group>
+            </group>
+        </menu>
+    </item>
 </menu>
