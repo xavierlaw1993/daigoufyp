@@ -32,6 +32,12 @@ public class ProductListCellView extends LinearLayout {
 
     Context context;
 
+    @InjectView(R.id.userIconImageView)
+    ImageView userIconImageView;
+
+    @InjectView(R.id.userNameTextView)
+    TextView userNameTextView;
+
     @InjectView(R.id.productNameTextView)
     TextView productNameTextView;
 
@@ -82,6 +88,7 @@ public class ProductListCellView extends LinearLayout {
     }
 
     public void bindModel(Product product) {
+        userNameTextView.setText(product.user_name);
         productNameTextView.setText(product.product_name);
         productPriceTextView.setText("HKD " + product.product_price);
         productCategoryTextView.setText(product.category);
@@ -92,6 +99,12 @@ public class ProductListCellView extends LinearLayout {
         productPicImageView.setLayoutParams(params);
 
         try {
+            Picasso.with(context)
+                    .load(product.user_profile_pic)
+                    .placeholder(R.mipmap.ic_launcher)
+                    .resize(Utils.screenWidth / 8, (int) (Utils.screenWidth / 8 * Utils.hdRatio))
+                    .into(userIconImageView);
+
             Picasso.with(context)
                     .load(product.product_pics.get(0).product_pic_url)
                     .placeholder(R.mipmap.ic_launcher)
@@ -127,6 +140,6 @@ public class ProductListCellView extends LinearLayout {
                 productDurationTextView.setText(context.getString(R.string.product__finished));
             }
         });
-        timerHelper.countDown(product.product_end_time);
+        timerHelper.countDown(Long.parseLong(product.product_end_time));
     }
 }

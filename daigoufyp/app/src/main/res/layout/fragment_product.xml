@@ -4,14 +4,26 @@
     android:layout_height="match_parent"
     tools:context=".controller.page.product.ProductsFragment">
 
+    <Spinner
+        android:id="@+id/categorySpinner"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <View
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/productListRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="51dp" />
 
     <ProgressBar
-        android:layout_gravity="center"
         android:id="@+id/progressbar"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
 </FrameLayout>

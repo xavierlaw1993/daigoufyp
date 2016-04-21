@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/productPicImageView"
+            android:id="@+id/shopPicImageView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/border_stroke_width"
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/half_margin"
-                android:text="wants to sell"
+                android:text="opened"
                 android:textAppearance="@style/TextAppearanceSmall" />
         </LinearLayout>
 
@@ -68,7 +68,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/productNameTextView"
+                    android:id="@+id/shopNameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="product name 123456789"
@@ -86,50 +86,11 @@
                         android:src="@drawable/pin_blue" />
 
                     <TextView
-                        android:id="@+id/productCategoryTextView"
+                        android:id="@+id/shopCategoryTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Fashion"
-                        android:textColor="@color/colorTextSecondary" />
-
-                    <ImageView
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:layout_marginLeft="@dimen/fab_margin"
-                        android:src="@drawable/pin_red" />
-
-                    <TextView
-                        android:id="@+id/productCountryTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Japan"
                         android:textColor="@color/colorTextSecondary" />
                 </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:gravity="right"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/productPriceTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/half_margin"
-                    android:text="$1234"
-                    android:textAppearance="@style/TextAppearanceLarge" />
-
-                <TextView
-                    android:id="@+id/productDurationTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/quater_margin"
-                    android:text="111 day 23:35:45"
-                    android:textAppearance="@style/TextAppearanceSmall"
-                    android:textColor="@color/colorAccent" />
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>

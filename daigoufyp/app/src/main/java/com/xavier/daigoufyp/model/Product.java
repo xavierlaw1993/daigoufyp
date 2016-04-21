@@ -14,10 +14,16 @@ public class Product implements Parcelable {
     private static String TAG = "Product";
 
     @Expose
-    public int product_id;
+    public String product_id;
 
     @Expose
     public String user_id;
+
+    @Expose
+    public String user_name;
+
+    @Expose
+    public String user_profile_pic;
 
     @Expose
     public String product_name;
@@ -29,16 +35,16 @@ public class Product implements Parcelable {
     public String product_description;
 
     @Expose
-    public long product_create_time;
+    public String product_create_time;
 
     @Expose
-    public long product_end_time;
+    public String product_end_time;
 
     @Expose
-    public double product_price;
+    public String product_price;
 
     @Expose
-    public int quantity;
+    public String quantity;
 
     @Expose
     public String remark;
@@ -49,18 +55,43 @@ public class Product implements Parcelable {
     @Expose
     public String country;
 
+
     protected Product(Parcel in) {
-        product_id = in.readInt();
+        product_id = in.readString();
         user_id = in.readString();
+        user_name = in.readString();
+        user_profile_pic = in.readString();
         product_name = in.readString();
         product_description = in.readString();
-        product_create_time = in.readLong();
-        product_end_time = in.readLong();
-        product_price = in.readDouble();
-        quantity = in.readInt();
+        product_create_time = in.readString();
+        product_end_time = in.readString();
+        product_price = in.readString();
+        quantity = in.readString();
         remark = in.readString();
         category = in.readString();
         country = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(product_id);
+        dest.writeString(user_id);
+        dest.writeString(user_name);
+        dest.writeString(user_profile_pic);
+        dest.writeString(product_name);
+        dest.writeString(product_description);
+        dest.writeString(product_create_time);
+        dest.writeString(product_end_time);
+        dest.writeString(product_price);
+        dest.writeString(quantity);
+        dest.writeString(remark);
+        dest.writeString(category);
+        dest.writeString(country);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<Product> CREATOR = new Creator<Product>() {
@@ -80,6 +111,8 @@ public class Product implements Parcelable {
         return "Product{" +
                 "product_id=" + product_id +
                 ", user_id='" + user_id + '\'' +
+                ", user_name='" + user_name + '\'' +
+                ", user_profile_pic='" + user_profile_pic + '\'' +
                 ", product_name='" + product_name + '\'' +
                 ", product_pics=" + product_pics +
                 ", product_description='" + product_description + '\'' +
@@ -92,24 +125,5 @@ public class Product implements Parcelable {
                 ", country='" + country + '\'' +
                 '}';
     }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(product_id);
-        dest.writeString(user_id);
-        dest.writeString(product_name);
-        dest.writeString(product_description);
-        dest.writeLong(product_create_time);
-        dest.writeLong(product_end_time);
-        dest.writeDouble(product_price);
-        dest.writeInt(quantity);
-        dest.writeString(remark);
-        dest.writeString(category);
-        dest.writeString(country);
-    }
 }
+

@@ -6,10 +6,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.xavier.daigoufyp.R;
 import com.xavier.daigoufyp.controller.network.AbsRequestListener;
 import com.xavier.daigoufyp.controller.network.request.GetProductDetailRequest;
@@ -31,6 +33,12 @@ public class ProductDetailActivity extends AbsSpiceBackActivity {
 
     @InjectExtra(value = "product_id", optional = false)
     int product_id;
+
+    @InjectView(R.id.userNameTextView)
+    TextView userNameTextView;
+
+    @InjectView(R.id.userIconImageView)
+    ImageView userIconImageView;
 
     @InjectView(R.id.productPictureView)
     ProductPictureView productPictureView;
@@ -100,7 +108,16 @@ public class ProductDetailActivity extends AbsSpiceBackActivity {
                 public void onPictureClick(ProductPicture productPicture) {
                 }
             });
+            userNameTextView.setText(productResponse.product.user_name);
+            try{
+                Picasso.with(ProductDetailActivity.this)
+                        .load(productResponse.product.user_profile_pic)
+                        .placeholder(R.mipmap.ic_launcher)
+                        .resize(Utils.screenWidth /8, (int)(Utils.screenWidth /8 * Utils.hdRatio))
+                        .into(userIconImageView);
 
+            }catch (Exception ex) {
+            }
             productNameTextView.setText(productResponse.product.product_name);
             productCategoryTextView.setText(productResponse.product.category);
             productCountryTextView.setText(productResponse.product.country);
@@ -123,7 +140,7 @@ public class ProductDetailActivity extends AbsSpiceBackActivity {
                     productDurationTextView.setText(getString(R.string.product__finished));
                 }
             });
-            timerHelper.countDown(productResponse.product.product_end_time);
+            timerHelper.countDown(Long.parseLong(productResponse.product.product_end_time));
         }
 
         @Override

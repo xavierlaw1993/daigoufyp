@@ -24,6 +24,7 @@ import com.squareup.picasso.Picasso;
 import com.xavier.daigoufyp.R;
 import com.xavier.daigoufyp.controller.page.abs.AbsSpiceActivity;
 import com.xavier.daigoufyp.controller.page.login.LoginActivity;
+import com.xavier.daigoufyp.controller.page.order.MyOrderFragment;
 import com.xavier.daigoufyp.controller.page.product.NewProductFragment;
 import com.xavier.daigoufyp.model.User;
 
@@ -56,10 +57,21 @@ public class MainActivity extends AbsSpiceActivity implements NavigationView.OnN
         drawerLayout.setDrawerListener(toggle);
         toggle.syncState();
 
+
         navigationView.setNavigationItemSelectedListener(this);
 
         //default set home fragment
         if (savedInstanceState == null) {
+            if (getIntent().hasExtra("TO_FRAGMENT")) {
+                switch (getIntent().getIntExtra("TO_FRAGMENT", 0)) {
+                    case R.id.nav_order:
+                        navigationView.getMenu().performIdentifierAction(R.id.nav_order, 0);
+                        break;
+                    case R.id.nav_create_product:
+                        navigationView.getMenu().performIdentifierAction(R.id.nav_create_product, 0);
+                        break;
+                }
+            }
             navigationView.getMenu().performIdentifierAction(R.id.nav_home, 0);
         }
 
@@ -129,7 +141,7 @@ public class MainActivity extends AbsSpiceActivity implements NavigationView.OnN
                 fragmentClass = HomeFragment.class;
                 break;
             case R.id.nav_order:
-                fragmentClass = HomeFragment.class;
+                fragmentClass = MyOrderFragment.class;
                 break;
             case R.id.nav_product:
                 fragmentClass = HomeFragment.class;

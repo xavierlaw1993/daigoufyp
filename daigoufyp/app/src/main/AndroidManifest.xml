@@ -52,9 +52,6 @@
             android:name=".controller.page.product.ProductConfirmBuyActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".controller.page.shop.NewShopActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".controller.page.shop.ShopDetailActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".controller.page.FullScreenPictureActivity" />
@@ -87,7 +84,7 @@
             android:name=".controller.network.DaigouFypSerivce"
             android:exported="false" />
 
-        <activity android:name=".controller.page.order.MyOrderActivity"></activity>
+        <activity android:name=".controller.page.order.OrderDetailActivity"></activity>
     </application>
 
 </manifest>

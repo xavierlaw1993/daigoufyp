@@ -8,7 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 
 import com.xavier.daigoufyp.R;
 import com.xavier.daigoufyp.controller.adapter.list.AbsListAdapter;
@@ -18,6 +21,7 @@ import com.xavier.daigoufyp.controller.network.request.GetAllProductsRequest;
 import com.xavier.daigoufyp.controller.page.abs.AbsSpiceFragment;
 import com.xavier.daigoufyp.model.Product;
 import com.xavier.daigoufyp.model.response.ProductListResponse;
+import com.xavier.daigoufyp.utils.Constants;
 import com.xavier.daigoufyp.utils.Utils;
 
 import java.util.ArrayList;
@@ -33,6 +37,9 @@ public class ProductsFragment extends AbsSpiceFragment {
 
     @InjectView(R.id.progressbar)
     ProgressBar progressbar;
+
+    @InjectView(R.id.categorySpinner)
+    Spinner categorySpinner;
 
     List<Product> productList = new ArrayList<>();
 
@@ -50,18 +57,48 @@ public class ProductsFragment extends AbsSpiceFragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        ArrayAdapter<String> categoriesAdapter = new ArrayAdapter<>(getActivity(), R.layout.view_spinner_item, Constants.getCategoryList());
+        categorySpinner.setAdapter(categoriesAdapter);
+        categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String category = categorySpinner.getSelectedItem().toString();
+                List<Product> newProductList = new ArrayList<>();
+                if (i > 0) {
+                    for (int x = 0; x < productList.size(); x++) {
+                        if (productList.get(x).category.equals(category))
+                            newProductList.add(productList.get(x));
+                    }
+                    productList.clear();
+                    productList.addAll(newProductList);
+                    productListRecyclerView.getAdapter().notifyDataSetChanged();
+                } else{
+                    requestAllProductsAPI();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         LinearLayoutManager manager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         ProductListAdapter adapter = new ProductListAdapter(productList);
         adapter.setOnItemClickListener(new AbsListAdapter.OnItemClickListener<Product>() {
             @Override
             public void onItemClick(Product item) {
                 Intent i = new Intent(getActivity(), ProductDetailActivity.class);
-                i.putExtra("product_id", item.product_id);
+                i.putExtra("product_id", Integer.parseInt(item.product_id));
                 startActivity(i);
             }
         });
         productListRecyclerView.setLayoutManager(manager);
         productListRecyclerView.setAdapter(adapter);
+        requestAllProductsAPI();
+    }
+
+    private void requestAllProductsAPI() {
+        progressbar.setVisibility(View.VISIBLE);
         getSpiceManager().execute(
                 new GetAllProductsRequest(getActivity()),
                 new GetAllProductsRequestListener());
@@ -71,6 +108,7 @@ public class ProductsFragment extends AbsSpiceFragment {
 
         @Override
         public void onSuccess(ProductListResponse productListResponse) {
+            productList.clear();
             productList.addAll(productListResponse.products);
             productListRecyclerView.getAdapter().notifyDataSetChanged();
             progressbar.setVisibility(View.GONE);

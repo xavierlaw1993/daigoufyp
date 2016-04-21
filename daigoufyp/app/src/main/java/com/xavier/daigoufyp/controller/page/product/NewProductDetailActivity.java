@@ -38,13 +38,13 @@ public class NewProductDetailActivity extends AbsSpiceBackActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!TextUtils.isEmpty(descriptionEditText.getEditableText())) {
+                if (!TextUtils.isEmpty(descriptionEditText.getEditableText().toString())) {
                     Intent i = new Intent(NewProductDetailActivity.this, NewProductAttributeActivity.class);
                     if (getIntent().getExtras() != null)
                         i.putExtras(getIntent().getExtras());
-                    i.putExtra("PRODUCT_DESCRIPTION", descriptionEditText.getEditableText());
-                    if (!TextUtils.isEmpty(remarkEditText.getEditableText()))
-                        i.putExtra("PRODUCT_REMARK", remarkEditText.getEditableText());
+                    i.putExtra("PRODUCT_DESCRIPTION", descriptionEditText.getEditableText().toString());
+                    if (!TextUtils.isEmpty(remarkEditText.getEditableText().toString()))
+                        i.putExtra("PRODUCT_REMARK", remarkEditText.getEditableText().toString());
                     startActivity(i);
                 } else {
                     Utils.showFailureSnackbar(findViewById(android.R.id.content),

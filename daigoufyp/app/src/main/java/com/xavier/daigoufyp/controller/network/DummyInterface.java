@@ -1,8 +1,12 @@
 package com.xavier.daigoufyp.controller.network;
 
 import com.xavier.daigoufyp.model.response.AbsResponse;
+import com.xavier.daigoufyp.model.response.MyOrderListResponse;
+import com.xavier.daigoufyp.model.response.MyOrderResponse;
 import com.xavier.daigoufyp.model.response.ProductListResponse;
 import com.xavier.daigoufyp.model.response.ProductResponse;
+import com.xavier.daigoufyp.model.response.ShopListResponse;
+import com.xavier.daigoufyp.model.response.ShopResponse;
 import com.xavier.daigoufyp.model.response.UserResponse;
 
 import java.util.List;
@@ -19,6 +23,19 @@ public interface DummyInterface {
                        @Query("user_name") String user_name,
                        @Query("user_email") String user_email,
                        @Query("user_profile_pic") String user_profile_pic);
+
+    @GET("/create_order.php")
+    AbsResponse createOrder(@Query("seller_id") String seller_id,
+                            @Query("buyer_id") String buyer_id,
+                            @Query("product_id") int product_id,
+                            @Query("order_status") String order_status,
+                            @Query("order_create_time") long order_create_time,
+                            @Query("order_total_price") int total_price,
+                            @Query("delivery_address") String delivery_address);
+
+    @GET("/update_order.php")
+    AbsResponse updateOrder(@Query("order_id") int order_id,
+                            @Query("order_status") String order_status);
 
     @GET("/get_all_products.json")
     ProductListResponse getAllProducts();
@@ -38,21 +55,18 @@ public interface DummyInterface {
                               @Query("quantity") int quantity,
                               @Query("remark") String remark);
 
-    @GET("/get_user_orders")
-    ProductListResponse getUserOrders(@Query("user_id") String user_id,
+    @GET("/get_user_orders.php")
+    MyOrderListResponse getUserOrders(@Query("user_id") String user_id,
                                       @Query("type") String type);
 
-    @GET("/get_order_detail")
-    ProductResponse getOrderDetail(@Query("order_id") int order_id);
+    @GET("/get_order_detail.php")
+    MyOrderResponse getOrderDetail(@Query("order_id") int order_id);
 
-    @GET("/create_order")
-    AbsResponse createOrder(@Query("seller_id") String seller_id,
-                            @Query("buyer_id") String buyer_id,
-                            @Query("product_ids") List<Integer> product_ids,
-                            @Query("order_create_time") String order_create_time,
-                            @Query("order_status") String order_status,
-                            @Query("order_total_price") String order_total_price,
-                            @Query("delivery_address") String delivery_address);
+    @GET("/get_all_shops.json")
+    ShopListResponse getAllShops();
+
+    @GET("/get_shop_detail.json")
+    ShopResponse getShopDetail(@Query("shop_id") int shop_id);
 
 
 }

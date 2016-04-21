@@ -26,6 +26,7 @@ public class Constants {
 
     public static List<String> getCategoryList() {
         String[] array = new String[]{
+                "Select One Category",
                 "Accessories",
                 "Women's Apparel & Shoes",
                 "Men's Apparel & Shoes",
@@ -41,6 +42,7 @@ public class Constants {
 
     public static List<String> getCountryList() {
         String[] array = new String[]{
+                "Select One Country",
                 "Japan",
                 "Taiwan",
                 "Europe",

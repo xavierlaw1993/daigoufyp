@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by zensis on 20/4/16.
  */
-public class MyOrderListResponse {
+public class MyOrderListResponse extends AbsResponse{
     @Expose
     public List<Order> orders;
 }

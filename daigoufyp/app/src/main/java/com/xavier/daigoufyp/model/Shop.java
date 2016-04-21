@@ -9,7 +9,16 @@ public class Shop {
     private static String TAG = "Shop";
 
     @Expose
-    public int shop_id;
+    public String shop_id;
+
+    @Expose
+    public String user_id;
+
+    @Expose
+    public String user_profile_pic;
+
+    @Expose
+    public String user_name;
 
     @Expose
     public String shop_name;
@@ -18,7 +27,7 @@ public class Shop {
     public String shop_description;
 
     @Expose
-    public long shop_create_time;
+    public String shop_create_time;
 
     @Expose
     public String shop_pic;
@@ -29,10 +38,12 @@ public class Shop {
     @Override
     public String toString() {
         return "Shop{" +
-                "shop_id=" + shop_id +
+                "shop_id='" + shop_id + '\'' +
+                ", user_id='" + user_id + '\'' +
+                ", user_name='" + user_name + '\'' +
                 ", shop_name='" + shop_name + '\'' +
                 ", shop_description='" + shop_description + '\'' +
-                ", shop_create_time=" + shop_create_time +
+                ", shop_create_time='" + shop_create_time + '\'' +
                 ", shop_pic='" + shop_pic + '\'' +
                 ", category='" + category + '\'' +
                 '}';

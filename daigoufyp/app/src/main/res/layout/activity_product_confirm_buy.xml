@@ -8,52 +8,68 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/fab_margin"
-            android:text="@string/product__quantity" />
+            android:layout_margin="@dimen/half_margin"
+            android:background="@drawable/shape_rect_blue_border"
+            android:orientation="vertical">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/half_margin"
+                android:text="@string/product__quantity"
+                android:textColor="@color/colorTextSecondary" />
 
-        <com.xavier.daigoufyp.view.CustomSpinnerView
-            android:id="@+id/quantitySpinnerView"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/view_custom_spinner_height" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray" />
+            <com.xavier.daigoufyp.view.CustomSpinnerView
+                android:id="@+id/quantitySpinnerView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_custom_spinner_height" />
+        </LinearLayout>
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/fab_margin"
-            android:text="@string/product__price" />
+            android:layout_margin="@dimen/half_margin"
+            android:background="@drawable/shape_rect_blue_border"
+            android:orientation="vertical">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/fab_margin"
+                android:text="@string/product__price"
+                android:textColor="@color/colorTextSecondary" />
 
-        <TextView
-            android:id="@+id/totalPriceTextView"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/view_custom_spinner_height"
-            android:gravity="center"
-            android:padding="@dimen/half_margin"
-            android:textAppearance="@style/TextAppearanceLarge"
-            android:textColor="@color/colorAccent" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray" />
+            <TextView
+                android:id="@+id/totalPriceTextView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_custom_spinner_height"
+                android:gravity="center"
+                android:padding="@dimen/half_margin"
+                android:textAppearance="@style/TextAppearanceLarge"
+                android:textColor="@color/colorAccent" />
+        </LinearLayout>
+
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/confirmToBuyButton"
