@@ -23,6 +23,7 @@
         <item name="android:colorAccent">@color/colorAccent</item>
         <item name="titleTextColor">@color/colorWhite</item>
         <item name="android:titleTextColor">@color/colorWhite</item>
+
         <item name="buttonStyle">@style/ButtonStyle</item>
         <item name="android:buttonStyle">@style/ButtonStyle</item>
         <item name="colorButtonNormal">@color/colorAccent</item>
@@ -31,6 +32,5 @@
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
